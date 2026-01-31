@@ -1,0 +1,20 @@
+# Use a lightweight official Python image
+FROM python:3.10
+
+# Set the working directory inside the container
+WORKDIR /app
+
+# Copy dependency list first (better Docker layer caching)
+COPY src/requirements.txt .
+
+# Install Python dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy application source code
+COPY src/ .
+
+# Create artifacts directory (safe even if volume-mounted)
+RUN mkdir -p /app/artifacts
+
+# Always run the training script, allow runtime arguments
+ENTRYPOINT ["python", "main.py"]
