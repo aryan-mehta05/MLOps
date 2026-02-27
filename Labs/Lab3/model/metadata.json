@@ -1,0 +1,65 @@
+{
+  "dataset": "sklearn.datasets.load_wine",
+  "model": "Pipeline(StandardScaler -> LogisticRegression)",
+  "random_state": 42,
+  "metrics": {
+    "accuracy": 1.0,
+    "classification_report": {
+      "0": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 15.0
+      },
+      "1": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 18.0
+      },
+      "2": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 12.0
+      },
+      "accuracy": 1.0,
+      "macro avg": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 45.0
+      },
+      "weighted avg": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 45.0
+      }
+    }
+  },
+  "schema": {
+    "feature_names": [
+      "alcohol",
+      "malic_acid",
+      "ash",
+      "alcalinity_of_ash",
+      "magnesium",
+      "total_phenols",
+      "flavanoids",
+      "nonflavanoid_phenols",
+      "proanthocyanins",
+      "color_intensity",
+      "hue",
+      "od280/od315_of_diluted_wines",
+      "proline"
+    ],
+    "class_names": [
+      "class_0",
+      "class_1",
+      "class_2"
+    ],
+    "num_features": 13,
+    "num_classes": 3
+  }
+}
