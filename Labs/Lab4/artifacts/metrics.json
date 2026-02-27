@@ -1,0 +1,15 @@
+{
+  "best_config": {
+    "n_estimators": 350,
+    "max_depth": null,
+    "min_samples_leaf": 1,
+    "mse": 0.25258576701667573,
+    "train_time_sec": 28.484034061431885
+  },
+  "final_mse": 0.25258576701667573,
+  "sequential_time_sec": 258.08484292030334,
+  "parallel_time_sec": 58.84050893783569,
+  "speedup_x": 4.386176251346958,
+  "dataset": "fetch_california_housing",
+  "model": "RandomForestRegressor"
+}
