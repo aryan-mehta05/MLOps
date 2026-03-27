@@ -1,0 +1,44 @@
+# This file contains the same code as my `.github/workflows/lab5-unittest.yml` file.
+# Reference copy only. Actual workflow is in `.github/workflows/` as mentioned in the professor's README.md.
+
+name: Lab5 Unittest CI (Reference Copy)
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "Labs/Lab5/**"
+      - ".github/workflows/lab5-unittest.yml"
+  pull_request:
+    branches: [main]
+    paths:
+      - "Labs/Lab5/**"
+      - ".github/workflows/lab5-unittest.yml"
+
+jobs:
+  unittest:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: Labs/Lab5
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run unittest suite
+        run: |
+          echo "Running Lab5 unittest suite..."
+          python -m unittest -v test.test_unittest
+          echo "Unittest suite completed."

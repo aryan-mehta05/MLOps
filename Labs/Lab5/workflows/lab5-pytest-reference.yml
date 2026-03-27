@@ -1,0 +1,51 @@
+# This file contains the same code as my `.github/workflows/lab5-pytest.yml` file.
+# Reference copy only. Actual workflow is in `.github/workflows/` as mentioned in the professor's README.md.
+
+name: Lab5 Pytest CI (Reference Copy)
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "Labs/Lab5/**"
+      - ".github/workflows/lab5-pytest.yml"
+  pull_request:
+    branches: [main]
+    paths:
+      - "Labs/Lab5/**"
+      - ".github/workflows/lab5-pytest.yml"
+
+jobs:
+  pytest:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: Labs/Lab5
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run pytest with coverage
+        run: |
+          echo "Running Lab5 pytest suite..."
+          pytest -v test/test_pytest.py --cov=src --cov-report=term --junitxml=pytest-report.xml
+          echo "Pytest suite completed."
+
+      - name: Upload pytest report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lab5-pytest-report
+          path: Labs/Lab5/pytest-report.xml
